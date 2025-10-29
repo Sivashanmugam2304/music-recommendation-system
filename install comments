@@ -1,0 +1,3 @@
+!pip install fuzzywuzzy python-Levenshtein
+!pip install pyngrok streamlit
+use ngrok for authentication token
