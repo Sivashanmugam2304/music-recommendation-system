@@ -1,0 +1,18 @@
+from pyngrok import ngrok
+import subprocess
+
+# Kill any previous ngrok process (important for Colab)
+ngrok.kill()
+
+# Start Streamlit in the background (using nohup to keep it running)
+# Note: Output will be sent to nohup.out
+subprocess.Popen(['streamlit', 'run', 'app.py'])
+
+# Open a tunnel to the Streamlit port (8501 is the default Streamlit port)
+# You may need to replace "YOUR_AUTH_TOKEN" if ngrok prompts for it in your Colab session.
+ngrok.set_auth_token("34jAKU8og934MA7xgJb7bmi7max_3GTLHGpuwTQcrhygAeERo") # Uncomment this line and replace "YOUR_AUTH_TOKEN" with your actual token
+public_url = ngrok.connect(addr='8501', proto='http')
+
+print("--- 🚀 Streamlit App Launched ---")
+print(f"Click the link below to access your app:")
+print(f"URL: {public_url}")
